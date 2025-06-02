@@ -1,0 +1,27 @@
+{
+  "name": "typescript-playground",
+  "version": "1.0.0",
+  "description": "A playground for practicing TypeScript with various examples and exercises.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "watch": "tsc -w"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/typescript-playground.git"
+  },
+  "keywords": [
+    "typescript",
+    "playground",
+    "examples",
+    "learning"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
