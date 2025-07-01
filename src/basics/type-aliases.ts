@@ -1,3 +1,5 @@
+import { log, flipCoin } from '../utils/helpers'
+
 // Type Aliases - in a way, like naming a variable
 type Amount = {
   currency: string
@@ -19,7 +21,7 @@ const donation = {
 
 printAmount(donation)
 
-// Inheritance in Type Aliases
+// == Inheritance in Type Aliases ==
 // It is not exactly Inheritance, but in a way it works similarly. You can have a type and add another type
 // basically inherit from one type and add the second type that you want
 
@@ -31,7 +33,7 @@ const newYearsEve: SpecialDate =
     getDescription: () => 'Last day of the year',
   })
 
-console.log(newYearsEve.getDescription())
+log(newYearsEve.getDescription())
 
 type dateDetails = {
   getDateDescription(): string
@@ -45,4 +47,26 @@ const christmas: dateWithEvent = Object.assign(new Date(), {
   isHoliday: true,
 })
 
-console.log(christmas.getDateDescription(), christmas.isHoliday)
+log(`${(christmas.getDateDescription(), christmas.isHoliday)}`)
+
+// Tuple type
+type UserInfoOutcomeError = readonly ['error', Error]
+type UserInfoOutcomeSuccess = readonly [
+  'success',
+  { readonly name: string; readonly email: string }
+]
+type UserInfoOutcome = UserInfoOutcomeError | UserInfoOutcomeSuccess
+
+const success = [
+  'success',
+  { name: 'Beto Back', email: 'beto@example.com' },
+] as const
+const fail = ['error', new Error('Something went wrong!')] as const
+
+export function maybeGetUserInfo(): UserInfoOutcome {
+  if (flipCoin() === 'heads') {
+    return success
+  } else {
+    return fail
+  }
+}
