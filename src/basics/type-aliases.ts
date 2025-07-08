@@ -21,6 +21,8 @@ const donation = {
 
 printAmount(donation)
 
+type StringMightBeNull = string | null
+
 // == Inheritance in Type Aliases ==
 // It is not exactly Inheritance, but in a way it works similarly. You can have a type and add another type
 // basically inherit from one type and add the second type that you want
