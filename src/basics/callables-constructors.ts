@@ -1,5 +1,7 @@
 //* TypeScript Callables and Constructors
 //* Callables
+// Some materials are based on:
+// https://www.typescript-training.com/course/fundamentals-v4/10-callables/
 
 import { log } from '../utils/helpers'
 
@@ -83,6 +85,29 @@ handleMainEvent(myFrame, (val) => {}) // messageEvent
 
 // const myFrame = document.getElementsByTagName('form')[0] // - FormData
 // handleMainEvent(myFrame, (val) => {}) // myFrame = HTMLForm, val = formData
+
+//* `this` types
+// It is possible to type the 'this' keyword to make sure of the type
+// you're expecting
+// function myClickHandler(event: Event) {
+//     this.disabled = true // this = any?
+// }
+// myClickHandler(new Event("click")) // maybe ok?
+
+// Special JavaScript way of handling this case
+function myClickHandler(this: HTMLButtonElement, event: Event) {
+  this.disabled = true // Now a button type
+}
+
+// Attention - 'this' in the function above is just typing the context of this.
+// It is NOT an argument, you still have only one argument for the myClickHandler function
+// myClickHandler(new Event('click')) //! Not ok, not button
+
+const myButton = document.getElementsByTagName('button')[0]
+const boundHandler = myClickHandler.bind(myButton) // binding the new button
+// now 'this' is already applied to boundHandler, just expects the event
+boundHandler(new Event('click')) // bound version: ok
+myClickHandler.call(myButton, new Event('click')) // or this way, also ok
 
 //* Constructors
 // Not using the 'new' word we have a call signature like above
