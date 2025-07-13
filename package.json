@@ -7,7 +7,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "watch": "tsc -w",
-    "dev": "ts-node"
+    "dev": "ts-node",
+    "basic:index": "ts-node src/basics/index.ts",
+    "advanced:index": "ts-node src/advanced/index.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",

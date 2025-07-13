@@ -1,24 +1,33 @@
-// This file contains basic TypeScript examples and exercises.
+//* This file contains basic TypeScript examples
+// Also an index for the 'basics' folder
+
 import { log } from '../utils/helpers'
 
-export function greet(name: string): string {
-  return `Hello, ${name}!`
-}
+const topics = ['1 - Introduction (intro.ts)', '2 - Variables and values']
 
-export function add(a: number, b: number): number {
-  return a + b
-}
+// Tuple type for topic entries: [description, filename]
+type TopicEntry = readonly [string, string]
 
-export class Person {
-  constructor(public name: string, public age: number) {}
+// Array of topic tuples
+const topicEntries: TopicEntry[] = [
+  ['1 - Intro', 'intro.ts'],
+  ['2 - Variables and values', 'variables.ts'],
+  ['3 - Type aliases', 'type-aliases.ts'],
+  ['4 - Objects, arrays and tuples', 'TO-CREATE'],
+  ['5 - Functions', 'function-returns.ts'],
+  ['7 - Union & intersection', 'union-intersection.ts'],
+  ['8 - Using enums', 'TO-CREATE'],
+  ['9 - Using as const', 'as-const.ts'],
+  ['10 - Interfaces, extends, implements', 'interface-extends-implements.ts'],
+  ['11 - Type queries', 'type-queries'],
+  ['12 - callables and constructors', 'callables-constructors'],
+  ['13 - Classes & type guards', 'cls-and-type-guards.ts'],
+]
 
-  describe(): string {
-    return `${this.name} is ${this.age} years old.`
+const logIndex = (topicsArr: TopicEntry[]) => {
+  for (let i = 0; i < topicsArr.length; i++) {
+    log(`Topic: ${topicsArr[i][0]} | File: ${topicsArr[i][1]}`)
   }
 }
 
-// Example usage
-const person = new Person('Alice', 30)
-log(person.describe())
-log(greet('Bob'))
-log(add(5, 10).toString())
+logIndex(topicEntries)

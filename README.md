@@ -8,7 +8,7 @@ The project is organized into the following folders:
 
 - **src/**: Contains all the TypeScript source files.
   - **basics/**: Basic TypeScript examples and exercises.
-    - `index.ts`: Fundamental TypeScript concepts.
+    - `index.ts`: Starting point with index
   - **advanced/**: More complex TypeScript examples and exercises.
     - `index.ts`: Advanced features such as generics and decorators.
   - **utils/**: Utility functions that can be used across different examples.
@@ -40,12 +40,30 @@ To get started with the TypeScript Playground, follow these steps:
 
 4. **Run the examples**:
    You can run the compiled JavaScript files using Node.js. For example, to run the basic examples:
+
    ```
    node dist/basics/index.js
    ```
+
    or
+
    ```
    ts-node basics/index.ts
+   ```
+
+5. **Check the files index**:
+   You can go file by file or check all topics within the index.
+   For example, to run the basic examples:
+   ```
+   npm run basics:index
+   ```
+   For advanced, run:
+   ```
+   npm run advanced:index
+   ```
+   or just run the file you want with
+   ```
+   npx ts-node filename
    ```
 
 ## Contributing
