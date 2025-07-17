@@ -21,7 +21,7 @@ const topicEntries: TopicEntry[] = [
   ['10 - Interfaces, extends, implements', 'interface-extends-implements.ts'],
   ['11 - Type queries', 'type-queries'],
   ['12 - callables and constructors', 'callables-constructors'],
-  ['13 - Classes & type guards', 'cls-and-type-guards.ts'],
+  ['13 - Classes & type guards', 'classes-and-typeguards.ts'],
 ]
 
 const logIndex = (topicsArr: TopicEntry[]) => {
