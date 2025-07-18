@@ -110,12 +110,16 @@ class Truck {
 //* Access modifier keywords
 class SmallCar {
   //? on static fields
+  // private - only instances of this class can see this field (subclasses cannot see it)
+  // private static nextSerialNumber: number
   private static nextSerialNumber = 0
   //? on member fields
-  private static generateSerialNumber() {
+  private static generateSerialNumber(): number {
     return this.nextSerialNumber++
   }
+  // no static - instance
   private _serialNumber = SmallCar.generateSerialNumber()
+  // sub-classes can see it, but anything else outside can't
   protected get serialNumber() {
     return this._serialNumber
   }
@@ -131,9 +135,13 @@ class SmallCar {
   }
 
   getSmallCarData() {
+    // this.serialNumber = 123 //! read-only property only a getter
     return `Car ${this.model} by ${this.make} has the serial number: ${this.serialNumber}`
   }
 }
+
+// static field
+// SmallCar.generateSerialNumber() //! private
 
 const smallNissan = new SmallCar('Nissan', 'Altima', 2020)
 // smallNissan.serialNumber //! not acessible
@@ -147,3 +155,72 @@ console.log(smallSmart.getSmallCarData()) // 1 - fine
 //? member fields
 // #serialNumber = Car.generateSerialNumber()
 // c.#serialNumber
+
+//? static fields
+// static #nextSerialNumber: number
+// static #generateSerialNumber() { return this.#nextSerialNumber++ }
+
+//? Private field presence checks
+// equals(other: any) {
+//   if (other && typeof other === 'object' && #serialNumber in other)
+
+//? readonly
+// readonly #serialNumber = Car.#generateSerialNumber()
+
+class SuperTruck {
+  //? static fields
+  static #nextSerialNumber: number
+  static #nextChassiNumber: number
+  static #generateSerialNumber(): number {
+    return this.#nextSerialNumber++
+  }
+
+  // private #serialNumber = SuperTruck.generateSerialNumber() //! TS complains - #serialNumber is private
+  // using protected will only 'protect' for ts - #var/method will still be private after compiled
+  #serialNumber = SuperTruck.#generateSerialNumber()
+  // just to fake an api for a new serial number
+  static {
+    if (!this.#nextSerialNumber) {
+      this.#nextSerialNumber = 1
+    }
+  }
+
+  static #generateChassiNumber(): number {
+    return this.#nextChassiNumber++
+  }
+
+  //? readonly - generates at start and it is done
+  readonly #chassiNumber = SuperTruck.#generateChassiNumber()
+
+  make: string
+  model: string
+  year: number
+  constructor(make: string, model: string, year: number) {
+    this.make = make
+    this.model = model
+    this.year = year
+  }
+
+  get getSTruckSerialNumber() {
+    return this.#serialNumber
+  }
+
+  //? Private field presence checks
+  // Check if is the same as other instance - similar to instanceOf
+  // all intances of SuperTruck can see private data on all other instances
+  equals(other: any) {
+    if (other && typeof other === 'object' && #serialNumber in other) {
+      other
+      //       ^?
+      return other.#serialNumber === this.#serialNumber
+    }
+    return false
+  }
+}
+
+const megaVolvo = new SuperTruck('Volvo', 'Strider', 2025)
+// This is private. Not secure, just private
+// megaVolvo.#serialNumber //! not acessible
+console.log(
+  `MegaVolvo details: Model: ${megaVolvo.model} | SN: #${megaVolvo.getSTruckSerialNumber}`
+)
