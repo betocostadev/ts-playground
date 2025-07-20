@@ -1,5 +1,6 @@
 //* TypeScript Classes and Type Guards
 // Lots of contents from here: https://www.typescript-training.com/course/fundamentals-v4/12-type-guards/
+// https://www.typescript-training.com/course/fundamentals-v4/11-classes/
 
 const TSpecies = {
   RODENT: 'rodent',
@@ -224,3 +225,61 @@ const megaVolvo = new SuperTruck('Volvo', 'Strider', 2025)
 console.log(
   `MegaVolvo details: Model: ${megaVolvo.model} | SN: #${megaVolvo.getSTruckSerialNumber}`
 )
+
+//* Parameter properties
+// Having too many properties repeating a lot? This helps
+
+class Base {}
+
+class Car2 extends Base {
+  foo = console.log('Class field initializer')
+  constructor(public make: string) {
+    // make here is like this.make = make
+    super()
+    console.log('Custom constructor stuff')
+  }
+}
+
+// constructor(
+//     public make: string,
+//     public model: string,
+//     public year: number
+//   ) {}
+//? notice that by adding public ts already creates the js part.
+class SuperCar {
+  #engineIsOn = false
+  constructor(public make: string, public model: string, public year: number) {
+    console.log(make, model, year)
+  }
+
+  get details(): string {
+    return `Super car ${this.model}, by ${this.make} | ${this.year}`
+  }
+
+  toggleEngine(): string {
+    this.#engineIsOn = !this.#engineIsOn
+    return `${this.model} engine is ${this.#engineIsOn ? 'on' : 'off'}`
+  }
+}
+
+const agera = new SuperCar('Koenigsegg', 'Agera', 2018)
+
+console.log(agera.details)
+console.log(agera.toggleEngine())
+console.log(agera.toggleEngine())
+
+//? override
+
+class SportCar extends SuperCar {
+  // override toggleEngines() { //? Can prevent the typo here because checks the base class
+  //   return 'No engine'
+  // }
+
+  override toggleEngine() {
+    // Will warn if noImplicitOverride is true
+    return 'Engine not provided'
+  }
+}
+
+//*tsconfig: noImplicitOverride: true
+// This will type check when you are overriding a class method
