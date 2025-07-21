@@ -1,4 +1,10 @@
+//* TypeScript Variable Declarations & Inference
+
 //* Variable Declarations & Inference
+
+console.log(`
+============= TypeScript - Variables & Inference =============
+`)
 
 let temperature = 6 //! inference
 // temperature = "hot"  //! type-checking

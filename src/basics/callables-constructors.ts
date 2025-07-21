@@ -3,6 +3,10 @@
 // Some materials are based on:
 // https://www.typescript-training.com/course/fundamentals-v4/10-callables/
 
+console.log(`
+============= TypeScript - Callables and Constructors =============
+`)
+
 import { log } from '../utils/helpers'
 
 // Call signature

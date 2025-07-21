@@ -1,5 +1,11 @@
-//* keyof
+//* TypeScript Type queries
+// Lots of contents from here: https://www.typescript-training.com/course/fundamentals-v4/09-type-queries/
 
+console.log(`
+============= TypeScript - Type Queries =============
+`)
+
+//* keyof
 type DatePropertyNames = keyof Date
 
 // Check that it gets the methods of the Date type

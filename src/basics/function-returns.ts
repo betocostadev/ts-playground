@@ -1,6 +1,10 @@
 //* Function implicit return type
 // https://www.typescript-training.com/course/fundamentals-v4/10-callables/
 
+console.log(`
+============= TypeScript - Function returns =============
+`)
+
 const maybeSumTwoNumbers = (a: number, b: number) => {
   if (Math.random() > 0.5) return 'Oh no'
   return a + b

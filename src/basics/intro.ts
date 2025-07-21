@@ -1,5 +1,9 @@
 //* This file contains basic TypeScript examples
 
+console.log(`
+============= TypeScript - Intro =============
+`)
+
 import { log } from '../utils/helpers'
 
 export function greet(name: string): string {

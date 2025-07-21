@@ -1,5 +1,8 @@
 // Exercise by Mike North
 //* Declare a JSON type
+console.log(`
+============= TypeScript - Type JSON Type =============
+`)
 
 //* JSON types
 /*

@@ -2,6 +2,10 @@
 // Very useful feature, including to be used as a better type instead
 // of using 'enums'.
 
+console.log(`
+============= TypeScript - as const =============
+`)
+
 import { log } from '../utils/helpers'
 
 // Very effective technique

@@ -4,6 +4,10 @@
 // Type guards used with control flow allow to create branches of code that have concrete assumptions.
 // Like, if it follows 1 branch, it is because it is of that specific type.
 
+console.log(`
+============= TypeScript - Type Guards =============
+`)
+
 //* Built-in type guards
 let value:
   | Date

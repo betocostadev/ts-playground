@@ -1,4 +1,9 @@
+//* TypeScript Union and Intersection Types
 // Union and Intersection Types
+
+console.log(`
+============= TypeScript - Union and Intersection Types =============
+`)
 
 type Evens = 2 | 4 | 6 | 8
 type oneThroughFive = 1 | 2 | 3 | 4 | 5

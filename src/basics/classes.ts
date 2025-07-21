@@ -1,6 +1,10 @@
 //* TypeScript Classes
 // Lots of contents from here: https://www.typescript-training.com/course/fundamentals-v4/11-classes/
 
+console.log(`
+============= TypeScript - Classes =============
+`)
+
 const TSpecies = {
   RODENT: 'rodent',
   CAT: 'cat',

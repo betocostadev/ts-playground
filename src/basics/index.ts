@@ -3,6 +3,10 @@
 
 import { log } from '../utils/helpers'
 
+console.log(`
+============= TypeScript Playground Index =============
+`)
+
 // Tuple type for topic entries: [description, filename]
 type TopicEntry = readonly [string, string]
 

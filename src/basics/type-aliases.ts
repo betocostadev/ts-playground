@@ -1,4 +1,10 @@
+//* TypeScript Type Aliases
+// Lots of contents from here: https://www.typescript-training.com/course/fundamentals-v4/07-interfaces-and-type-aliases/
 import { log, flipCoin } from '../utils/helpers'
+
+console.log(`
+============= TypeScript - Type Aliases =============
+`)
 
 // Type Aliases - in a way, like naming a variable
 type Amount = {

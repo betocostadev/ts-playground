@@ -1,3 +1,6 @@
+//* TypeScript Type Aliases
+// Lots of contents from here: //www.typescript-training.com/course/fundamentals-v4/07-interfaces-and-type-aliases/#interfaces
+
 //* Differences of Interfaces and Classes
 // Interface Extends
 // Interface Implements
@@ -6,6 +9,10 @@
 
 // Understand the difference of the base class extends & implements
 // and see the difference of what we have in TypeScript
+
+console.log(`
+============= TypeScript - Interface Extends and Implements =============
+`)
 
 // Using classes
 type Food = string
