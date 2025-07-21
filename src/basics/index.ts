@@ -3,12 +3,9 @@
 
 import { log } from '../utils/helpers'
 
-const topics = ['1 - Introduction (intro.ts)', '2 - Variables and values']
-
 // Tuple type for topic entries: [description, filename]
 type TopicEntry = readonly [string, string]
 
-// Array of topic tuples
 const topicEntries: TopicEntry[] = [
   ['1 - Intro', 'intro.ts'],
   ['2 - Variables and values', 'variables.ts'],
@@ -20,8 +17,10 @@ const topicEntries: TopicEntry[] = [
   ['9 - Using as const', 'as-const.ts'],
   ['10 - Interfaces, extends, implements', 'interface-extends-implements.ts'],
   ['11 - Type queries', 'type-queries'],
-  ['12 - callables and constructors', 'callables-constructors'],
-  ['13 - Classes & type guards', 'classes-and-typeguards.ts'],
+  ['12 - Callables and constructors', 'callables-constructors'],
+  ['13 - Classes', 'classes.ts'],
+  ['14 - Type guards and narrowing', 'type-guards.ts'],
+  ['15 - Generics', 'generics.ts'],
 ]
 
 const logIndex = (topicsArr: TopicEntry[]) => {

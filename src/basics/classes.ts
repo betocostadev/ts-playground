@@ -1,6 +1,5 @@
-//* TypeScript Classes and Type Guards
-// Lots of contents from here: https://www.typescript-training.com/course/fundamentals-v4/12-type-guards/
-// https://www.typescript-training.com/course/fundamentals-v4/11-classes/
+//* TypeScript Classes
+// Lots of contents from here: https://www.typescript-training.com/course/fundamentals-v4/11-classes/
 
 const TSpecies = {
   RODENT: 'rodent',
