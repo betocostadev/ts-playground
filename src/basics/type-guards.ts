@@ -197,3 +197,83 @@ console.log(checkCarLike(ferrariCalifornia))
 // The difference in the assert function is basically that we are throwing and error
 // think of it like the same thing, but for a different output. Maybe you can accept only that
 // type and other types should throw an error
+
+//* Use with private #field presence checks
+
+class Car {
+  static #nextSerialNumber: number = 100
+  static #generateSerialNumber() {
+    return this.#nextSerialNumber++
+  }
+
+  #serialNumber = Car.#generateSerialNumber()
+
+  static isCar(other: any): other is Car {
+    if (
+      other && // is it truthy
+      typeof other === 'object' && // and an object
+      #serialNumber in other
+    ) {
+      // and we can find a private field that we can access from here
+      // then it *must* be a car
+      other // Car
+      // ^?
+      return true
+    }
+    return false
+  }
+}
+
+// let anotherVal: any
+
+// if (Car.isCar(anotherVal)) {
+// anotherVal // Car
+// ^?
+// }
+
+//* Narrowing with switch(true)
+
+class Fishy {
+  swim(): void {
+    console.log('Fish is swimming')
+  }
+}
+class Birdy {
+  fly(): void {
+    console.log('Bird is flying')
+  }
+}
+
+// Pattern matching
+function runAnimalAction(val: any): void {
+  switch (true) {
+    case val instanceof Birdy:
+      val.fly()
+      break
+    case val instanceof Fishy:
+      val.swim()
+      break
+  }
+}
+
+const theNeeeemo = new Fishy()
+const theBeepyBoop = new Birdy()
+runAnimalAction(theNeeeemo)
+runAnimalAction(theBeepyBoop)
+
+//* Writing high-quality type guards
+
+//! EXAMPLE OF A BAD TYPE GUARD
+function isNull(val: any): val is null {
+  // falsy values will pass through here, so it will not return what we expect
+  // better to use val === null
+  return !val //! Lies!
+}
+const empty = ''
+const zero = 0
+if (isNull(zero)) {
+  console.log(zero) //? is it really impossible to get here?
+}
+if (isNull(empty)) {
+  console.log(empty) //? is it really impossible to get here?
+}
