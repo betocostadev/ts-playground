@@ -1,5 +1,15 @@
-export function log(message: string): void {
-  console.log(`[LOG] ${message}`)
+export function log(message: unknown): void {
+  if (typeof message === 'string') {
+    console.log(`[LOG] ${message}`)
+  } else if (Array.isArray(message)) {
+    console.log('[LOG] Array data:')
+    console.table(message)
+  } else if (typeof message === 'object' && message !== null) {
+    console.log('[LOG] Object data:')
+    console.table(message)
+  } else {
+    console.log(`[LOG]`, message)
+  }
 }
 
 export function formatDate(date: Date, format: string): string {
