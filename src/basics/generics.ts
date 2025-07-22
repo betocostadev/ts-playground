@@ -97,7 +97,7 @@ const carList = [
   { carId: '0004', make: 'Fiat', model: 'Uno Stairs Top', year: 2000 },
 ]
 
-const dictCarList = improvedListToDict(carList, (item) => item.carId)
+const dictCarList = improvedListToDict(carList, (item) => item.carId) // knows even item
 log(dictCarList)
 
 function wrapInArray<T>(arg: T): [T] {
@@ -108,3 +108,27 @@ wrapInArray(3)
 wrapInArray(new Date())
 //   ^?
 wrapInArray(new RegExp('/s/'))
+
+//* Best practices
+
+// Make sure you are really using your generic type. If it is not appearing in other places in the function
+// it is problably like below where T is simply any.
+function returnAs<T>(arg: any): T {
+  return arg //! an `any` that will _seem_ like a `T`
+} // may as well just cast
+
+function improvedReturnAs<T>(arg: T): T {
+  return arg
+}
+
+const maybeAString = returnAs<string>(1500) //! sees no problem in here
+// const maybeAnotherString = improvedReturnAs<string>(1500) //! type checks
+
+function makeMyTuple<T, U>(arg1: T, arg2: U): [T, U] {
+  return [arg1, arg2]
+}
+
+const mixedTuple = makeMyTuple('Foo', 2010)
+const stringTuple = makeMyTuple('Course', 'TypeScript')
+log(mixedTuple)
+log(stringTuple)
