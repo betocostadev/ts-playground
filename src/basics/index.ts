@@ -14,7 +14,7 @@ const topicEntries: TopicEntry[] = [
   ['1 - Intro', 'intro.ts'],
   ['2 - Variables and values', 'variables.ts'],
   ['3 - Type aliases', 'type-aliases.ts'],
-  ['4 - Objects, arrays and tuples', 'TO-CREATE'],
+  ['4 - Objects, arrays and tuples', 'objects-arrays-tuples.ts'],
   ['5 - Functions', 'function-returns.ts'],
   ['7 - Union & intersection', 'union-intersection.ts'],
   ['8 - Using enums', 'TO-CREATE'],
