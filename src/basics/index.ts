@@ -17,7 +17,7 @@ const topicEntries: TopicEntry[] = [
   ['4 - Objects, arrays and tuples', 'objects-arrays-tuples.ts'],
   ['5 - Functions', 'function-returns.ts'],
   ['7 - Union & intersection', 'union-intersection.ts'],
-  ['8 - Using enums', 'TO-CREATE'],
+  ['8 - Using enums', 'enums'],
   ['9 - Using as const', 'as-const.ts'],
   ['10 - Interfaces, extends, implements', 'interface-extends-implements.ts'],
   ['11 - Type queries', 'type-queries'],
